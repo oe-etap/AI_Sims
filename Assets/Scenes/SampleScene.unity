@@ -5250,6 +5250,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleport Anchor
       objectReference: {fileID: 0}
+    - target: {fileID: 268508938848858109, guid: 037ba65d346be2a48ad006b9a9a3873e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6707876468356395517, guid: 037ba65d346be2a48ad006b9a9a3873e,
         type: 3}
       propertyPath: m_RootOrder
@@ -5654,6 +5659,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleport Anchor (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 268508938848858109, guid: 037ba65d346be2a48ad006b9a9a3873e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6707876468356395517, guid: 037ba65d346be2a48ad006b9a9a3873e,
         type: 3}
       propertyPath: m_RootOrder
@@ -5987,7 +5997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &847399761
 Transform:
   m_ObjectHideFlags: 0
@@ -6815,7 +6825,7 @@ PrefabInstance:
     - target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0,
         type: 3}
@@ -9818,7 +9828,7 @@ MonoBehaviour:
   remote: 0
   port: 13333
   numThreads: -1
-  numGPULayers: 16
+  numGPULayers: 50
   debug: 0
   parallelPrompts: -1
   dontDestroyOnLoad: 1
@@ -11105,6 +11115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teleport Anchor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 268508938848858109, guid: 037ba65d346be2a48ad006b9a9a3873e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6707876468356395517, guid: 037ba65d346be2a48ad006b9a9a3873e,
         type: 3}
@@ -21286,17 +21301,17 @@ PrefabInstance:
     - target: {fileID: 4616165200164398447, guid: 76f3439a0ae796e4b81bee3f91f888ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.252
+      value: 26.057
       objectReference: {fileID: 0}
     - target: {fileID: 4616165200164398447, guid: 76f3439a0ae796e4b81bee3f91f888ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.208
+      value: 1.344
       objectReference: {fileID: 0}
     - target: {fileID: 4616165200164398447, guid: 76f3439a0ae796e4b81bee3f91f888ee,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.404
+      value: 34.115
       objectReference: {fileID: 0}
     - target: {fileID: 4616165200164398447, guid: 76f3439a0ae796e4b81bee3f91f888ee,
         type: 3}
@@ -21683,6 +21698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teleport Anchor (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 268508938848858109, guid: 037ba65d346be2a48ad006b9a9a3873e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6707876468356395517, guid: 037ba65d346be2a48ad006b9a9a3873e,
         type: 3}
@@ -23136,7 +23156,7 @@ PrefabInstance:
     - target: {fileID: 7244146772135435531, guid: 7de71eab801b1c543a963dcf118aa717,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.743
+      value: 34.135002
       objectReference: {fileID: 0}
     - target: {fileID: 7244146772135435531, guid: 7de71eab801b1c543a963dcf118aa717,
         type: 3}
@@ -23146,7 +23166,7 @@ PrefabInstance:
     - target: {fileID: 7244146772135435531, guid: 7de71eab801b1c543a963dcf118aa717,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 69.969
+      value: 77.267006
       objectReference: {fileID: 0}
     - target: {fileID: 7244146772135435531, guid: 7de71eab801b1c543a963dcf118aa717,
         type: 3}
@@ -28048,7 +28068,7 @@ PrefabInstance:
     - target: {fileID: 5171639767099707558, guid: 5dc341ded0234e44794d8c9427b1e178,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.841
+      value: 34.233
       objectReference: {fileID: 0}
     - target: {fileID: 5171639767099707558, guid: 5dc341ded0234e44794d8c9427b1e178,
         type: 3}
@@ -28058,7 +28078,7 @@ PrefabInstance:
     - target: {fileID: 5171639767099707558, guid: 5dc341ded0234e44794d8c9427b1e178,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 71.184
+      value: 78.482
       objectReference: {fileID: 0}
     - target: {fileID: 5171639767099707558, guid: 5dc341ded0234e44794d8c9427b1e178,
         type: 3}
@@ -30135,7 +30155,7 @@ PrefabInstance:
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.1924
+      value: 37.535
       objectReference: {fileID: 0}
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
@@ -30145,12 +30165,12 @@ PrefabInstance:
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 75.516945
+      value: 78.505
       objectReference: {fileID: 0}
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6734669
+      value: 0.94224864
       objectReference: {fileID: 0}
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
@@ -30160,7 +30180,7 @@ PrefabInstance:
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.73921746
+      value: -0.3349143
       objectReference: {fileID: 0}
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
@@ -30175,7 +30195,7 @@ PrefabInstance:
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -95.33
+      value: -39.135
       objectReference: {fileID: 0}
     - target: {fileID: 5723532374558615764, guid: 2b8b133d372c31e4ca3e122dd00e3bf5,
         type: 3}
@@ -30458,6 +30478,16 @@ PrefabInstance:
       objectReference: {fileID: 6714183069018432275}
     - target: {fileID: 7919225582230879435, guid: 8fb45d71aee6de046a6e86914b0c12d1,
         type: 3}
+      propertyPath: llmEntries.Array.data[0].promptText
+      value: "Du bist Mia, die freundliche Kassiererin bei Big Burger in SimVille.\r\nDeine
+        Stimmung ist fr\xF6hlich. Du bist sehr gl\xFCcklich bei Big Burger arbeiten
+        zu d\xFCrfen.\r\n\r\nBig Burger bietet folgende Mittagsoptionen an:\r\n\r\nClassic
+        Burger\r\n\r\nPommes\r\n\r\nPepsi\r\n\r\nCola \u2014 heute nicht verf\xFCgbar.
+        Biete als Alternative eine Pepsi an.\r\n\r\n\r\nDein Verhalten:\r\nSei h\xF6flich,
+        herzlich und kundenorientiert.\r\n\r\nHalte deine Antworten kurz."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919225582230879435, guid: 8fb45d71aee6de046a6e86914b0c12d1,
+        type: 3}
       propertyPath: llmEntries.Array.data[0].llmCharacter
       value: 
       objectReference: {fileID: 1344964913}
@@ -30501,6 +30531,16 @@ PrefabInstance:
       propertyPath: llmQuestEntries.Array.data[0].llmCharacter
       value: 
       objectReference: {fileID: 1665082472}
+    - target: {fileID: 7919225582230879435, guid: 8fb45d71aee6de046a6e86914b0c12d1,
+        type: 3}
+      propertyPath: llmEntries.Array.data[0].promptTextChallenging
+      value: "Du bist Mia, die genervte Kassiererin bei Big Burger in SimVille.\r\nDeine
+        Stimmung ist ver\xE4rgert.\r\n\r\nBig Burger bietet folgende Men\xFCoptionen
+        an:\r\n\r\nClassic Burger\r\n\r\nPommes\r\n\r\nPepsi\r\n\r\nVeggie Burger\r\n\r\nLimonade\r\n\r\nCola
+        \u2014 heute nicht verf\xFCgbar. Du kannst als Alternative eine Cola anbieten-\r\n\r\n\r\nDein
+        Verhalten:\r\n\r\nKlinge gereizt, ungeduldig und sarkastisch.\r\n\r\nHalte
+        deine Antworten kurz."
+      objectReference: {fileID: 0}
     - target: {fileID: 7919225582230879435, guid: 8fb45d71aee6de046a6e86914b0c12d1,
         type: 3}
       propertyPath: 'llmQuestEntries.Array.data[0].quests.Array.data[0]'
@@ -31547,7 +31587,7 @@ PrefabInstance:
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.393
+      value: 36.471
       objectReference: {fileID: 0}
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
@@ -31557,27 +31597,27 @@ PrefabInstance:
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 75.516945
+      value: 78.624
       objectReference: {fileID: 0}
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.97813565
       objectReference: {fileID: 0}
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.20796803
       objectReference: {fileID: 0}
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
@@ -31587,7 +31627,7 @@ PrefabInstance:
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 24.007
       objectReference: {fileID: 0}
     - target: {fileID: 340010483068872096, guid: 2fe9dc62f0f62844c93a53efbce7c1c1,
         type: 3}
@@ -33193,7 +33233,7 @@ PrefabInstance:
     - target: {fileID: 7958516418553984496, guid: 5b8d20b94304d6b4aa68dd42d0a9d562,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33301,12 +33341,12 @@ PrefabInstance:
     - target: {fileID: 4155472122666467541, guid: 7d789f4184e4dd542939ed6df6e26831,
         type: 3}
       propertyPath: NpcVoiceEnable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4155472122666467541, guid: 7d789f4184e4dd542939ed6df6e26831,
         type: 3}
       propertyPath: UserVoiceEnable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4155472122666467541, guid: 7d789f4184e4dd542939ed6df6e26831,
         type: 3}

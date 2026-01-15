@@ -108,7 +108,7 @@ namespace AiSims
         {
             WWWForm form = new WWWForm();
             form.AddField("model", sttModel);
-            form.AddField("language", "en");
+            form.AddField("language", "de"); // en
             form.AddBinaryData("file", wavData, "recording.wav", "audio/wav");
 
             using (UnityWebRequest www = UnityWebRequest.Post("https://api.openai.com/v1/audio/transcriptions", form))
