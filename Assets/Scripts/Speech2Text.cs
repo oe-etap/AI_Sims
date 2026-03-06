@@ -37,6 +37,7 @@ namespace AiSims
 
         void Start()
         {
+#if UNITY_WEBGL
             if (Microphone.devices.Length > 0)
             {
                 micDevice = Microphone.devices[0];
@@ -46,7 +47,7 @@ namespace AiSims
             {
                 Debug.LogError("No microphone found!");
             }
-
+#endif
             if (sttMode == STTMode.OpenAI_API)
             {
                 LoadApiKey();
@@ -82,12 +83,16 @@ namespace AiSims
         public void StartRecording()
         {
             Debug.Log("Recording started...");
+#if UNITY_WEBGL
             recording = Microphone.Start(micDevice, false, 80, 16000);
+#endif
         }
 
         public void StopRecording()
         {
+#if UNITY_WEBGL
             Microphone.End(micDevice);
+#endif
             Debug.Log("Recording stopped, sending to Whisper...");
 
             byte[] wavData = WavUtility.FromAudioClip(recording);
