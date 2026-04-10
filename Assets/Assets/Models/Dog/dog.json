@@ -1,0 +1,172 @@
+{
+    "dog": {
+        "Version": "1.10.1822.1",
+        "Scene": {
+            "Name": true,
+            "SupportShaderSelect": false
+        },
+        "Export Directory": "C:/Development/ETAP/Assets/Animations/dog",
+        "Object": {
+            "dog": {
+                "Physics": {
+                    "Collision Shapes": {
+                        "Shadow_Catcher": {},
+                        "CC_Base_Pivot": {},
+                        "Plane_001": {},
+                        "Dog_Collie": {},
+                        "Scene_Root_root": {},
+                        "Bip01": {},
+                        "Bip01_Footsteps": {},
+                        "Bip01_Pelvis": {},
+                        "Bip01_Spine": {},
+                        "Bip01_Spine1": {},
+                        "Bip01_Spine2": {},
+                        "Bip01_Neck": {},
+                        "Bip01_Neck1": {},
+                        "Bip01_Head": {},
+                        "Bip01_HeadNub": {},
+                        "Bone01": {},
+                        "Bone08": {},
+                        "Bone11": {},
+                        "Bone12": {},
+                        "Dummy01": {},
+                        "Bone05": {},
+                        "Bone06": {},
+                        "Bone03": {},
+                        "Bone04": {},
+                        "Bone02": {},
+                        "Bone07": {},
+                        "Bip01_L_Clavicle": {},
+                        "Bip01_L_UpperArm": {},
+                        "Bip01_L_Forearm": {},
+                        "Bip01_L_Hand": {},
+                        "Bip01_L_Finger0": {},
+                        "Bip01_L_Finger0Nub": {},
+                        "Bip01_R_Clavicle": {},
+                        "Bip01_R_UpperArm": {},
+                        "Bip01_R_Forearm": {},
+                        "Bip01_R_Hand": {},
+                        "Bip01_R_Finger0": {},
+                        "Bip01_R_Finger0Nub": {},
+                        "Bip01_L_Thigh": {},
+                        "Bip01_L_Calf": {},
+                        "Bip01_L_HorseLink": {},
+                        "Bip01_L_Foot": {},
+                        "Bip01_L_Toe0": {},
+                        "Bip01_L_Toe0Nub": {},
+                        "Bip01_R_Thigh": {},
+                        "Bip01_R_Calf": {},
+                        "Bip01_R_HorseLink": {},
+                        "Bip01_R_Foot": {},
+                        "Bip01_R_Toe0": {},
+                        "Bip01_R_Toe0Nub": {},
+                        "Bip01_Tail": {},
+                        "Bip01_Tail1": {},
+                        "Bip01_Tail2": {},
+                        "Bip01_TailNub": {},
+                        "Preview_Camera": {},
+                        "SheepDog": {}
+                    }
+                },
+                "Meshes": {
+                    "SheepDog": {
+                        "SubD Level": 0,
+                        "Materials": {
+                            "Dog_Collie": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    100.00000762939453,
+                                    100.00000762939453,
+                                    100.00000762939453
+                                ],
+                                "Specular Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "Dog_Collie_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Opacity": {
+                                        "Texture Path": "Dog_Collie_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Normal": {
+                                        "Texture Path": "Dog_Collie_Bump.jpg",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/dog/dog/SheepDog/Dog_Collie/Dog_Collie_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/dog/dog/SheepDog/Dog_Collie/Dog_Collie_MetallicAlpha.png"
+                                    }
+                                },
+                                "Resource Textures": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
