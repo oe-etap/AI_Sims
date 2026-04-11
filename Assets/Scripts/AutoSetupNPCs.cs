@@ -23,28 +23,30 @@ public class AutoSetupNPCs : MonoBehaviour
             if (talk == null)
                 talk = go.AddComponent<Talk>();
 
+            var maleTts = GameObject.Find("TTS_Male")?.GetComponent<PiperTtsService>();
+            var femaleTts = GameObject.Find("TTS_Female")?.GetComponent<PiperTtsService>();
 
-            // AudioSource (nem kötelező, de jó ha van)
-            if (go.GetComponent<AudioSource>() == null)
-                go.AddComponent<AudioSource>();
+            talk.maleTts = maleTts;
+            talk.femaleTts = femaleTts;
 
-            if (go.GetComponent<NPCVoiceProfile>() == null)
+
+            var profile = go.GetComponent<NPCVoiceProfile>();
+
+            if (profile == null)
+                profile = go.AddComponent<NPCVoiceProfile>();
+
+            string npcName = go.name.Replace("(Clone)", "").Trim();
+
+            if (femaleNames.Contains(npcName))
             {
-                var profile = go.AddComponent<NPCVoiceProfile>();
-
-                string npcName = go.name.Replace("(Clone)", "").Trim();
-
-                if (femaleNames.Contains(npcName))
-                {
-                    profile.voiceType = NPCVoiceProfile.VoiceType.Female;
-                }
-                else
-                {
-                    profile.voiceType = NPCVoiceProfile.VoiceType.Male;
-                }
-
-                Debug.Log($"[VOICE SETUP] {npcName} -> {profile.voiceType}");
+                profile.voiceType = NPCVoiceProfile.VoiceType.Female;
             }
+            else
+            {
+                profile.voiceType = NPCVoiceProfile.VoiceType.Male;
+            }
+
+            Debug.Log($"[VOICE SETUP] {npcName} -> {profile.voiceType}");
         }
 
         Debug.Log("NPC voice setup COMPLETE");

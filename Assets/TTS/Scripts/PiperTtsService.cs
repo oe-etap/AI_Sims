@@ -19,7 +19,7 @@ public sealed class PiperTtsService : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private BackendType backend = BackendType.CPU;
+    [SerializeField] private BackendType backend = BackendType.GPUCompute;
 
     [Header("Prosody-like pauses")]
     [SerializeField, Range(0f, 1f)] private float commaDelay = 0.10f;
@@ -234,10 +234,11 @@ public sealed class PiperTtsService : MonoBehaviour
             if (clip == null)
                 continue;
 
-            //audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip);
             audioSource.clip = clip;
             audioSource.Play();
             yield return new WaitWhile(() => audioSource.isPlaying);
+            yield return clip;
         }
     }
 

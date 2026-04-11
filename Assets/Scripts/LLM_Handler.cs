@@ -26,6 +26,7 @@ namespace AiSims
         private Talk currentTalkComp;
 
         bool addToHistory = false;
+        private float llmStartTime;
 
         [TextArea(5, 10), Chat] public string EvaluationString = string.Empty;
 
@@ -68,6 +69,10 @@ namespace AiSims
         void ReplyCompleted()
         {
             Debug.Log("REPLY COMPLETED");
+
+            float llmDuration = Time.time - llmStartTime;
+            conversationManager.llmTime = llmDuration;
+            Debug.Log("LLM TOTAL TIME: " + (Time.time - llmStartTime));
             try
             {
                 // Step 1: Null / empty guard
@@ -108,7 +113,6 @@ namespace AiSims
                 Debug.Log($"{llmCharacter.AIName}: {sanitized}");
 
                 // Step 8: Pass to conversation manager
-                Debug.Log("SENDING TO UI: " + sanitized);
                 //conversationManager.TalkNpc(sanitized, this, llmCharacter.AIName);
 
                 if (conversationManager != null)
@@ -177,6 +181,7 @@ namespace AiSims
 
         public void ProcessMessage(string message, bool addToHist = true)
         {
+            llmStartTime = Time.time;
             if (isGenerating)
             {
                 Debug.Log("LLM busy, skip input");

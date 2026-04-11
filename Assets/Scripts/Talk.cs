@@ -13,11 +13,10 @@ namespace AiSims
 
         public event Action OnSpeechFinished;
 
-        public ModelAsset maleModel;
-        public ESpeakTokenizer maleTokenizer;
+        public PiperTtsService maleTts;
+        public PiperTtsService femaleTts;
 
-        public ModelAsset femaleModel;
-        public ESpeakTokenizer femaleTokenizer;
+        private ConversationManager conversationManager;
 
         /// <summary>
         /// Start text-to-speech
@@ -33,8 +32,16 @@ namespace AiSims
             audioSource = voiceHandler.AudioSource;
             StartCoroutine(PlayVoice(text));
         }
+
+        void Awake()
+        {
+            conversationManager = FindObjectOfType<ConversationManager>();
+        }
+
         private IEnumerator PlayVoice(string text)
         {
+            float ttsStart = Time.time;
+
             if (isSpeaking)
             {
                 Debug.Log("Already speaking, skip");
@@ -47,81 +54,61 @@ namespace AiSims
 
             var profile = GetComponent<NPCVoiceProfile>();
 
-            var tts = FindObjectOfType<PiperTtsService>();
-
-            if (tts == null)
-            {
-                Debug.LogError("No PiperTtsService found in scene!");
-                isSpeaking = false;
-                yield break;
-            }
+            PiperTtsService selectedTts;
 
             if (profile != null && profile.voiceType == NPCVoiceProfile.VoiceType.Male)
             {
                 Debug.Log("[TTS] MALE selected");
-                tts.SetVoice(maleModel, maleTokenizer);
+                selectedTts = maleTts;
             }
             else
             {
                 Debug.Log("[TTS] FEMALE selected");
-                tts.SetVoice(femaleModel, femaleTokenizer);
+                selectedTts = femaleTts;
             }
 
+            // várjuk hogy ready legyen
             float initTimeout = 5f;
             float initTimer = 0f;
 
-            while (!tts.IsReady && initTimer < initTimeout)
+            while (!selectedTts.IsReady && initTimer < initTimeout)
             {
                 initTimer += Time.deltaTime;
                 yield return null;
             }
 
-            if (!tts.IsReady)
+            if (!selectedTts.IsReady)
             {
                 Debug.LogError("TTS failed to initialize!");
                 isSpeaking = false;
                 yield break;
             }
 
-            var audio = tts.GetComponent<AudioSource>();
+            var audio = selectedTts.GetComponent<AudioSource>();
 
-            if (profile != null && profile.voiceType == NPCVoiceProfile.VoiceType.Male)
-            {
-                audio.pitch = 0.85f;
-            }
-            else
-            {
-                audio.pitch = 1.1f;
-            }
+            // kis hang tuning
+            audio.pitch = (profile != null && profile.voiceType == NPCVoiceProfile.VoiceType.Male)
+                ? 0.9f
+                : 1.05f;
+            //audio.pitch = 1f;
 
-            tts.Speak(text);
+            selectedTts.Speak(text);
 
-            float startTimeout = 3f;
-            float timer = 0f;
+            yield return new WaitForSeconds(0.1f);
 
-            while (!audio.isPlaying && timer < startTimeout)
-            {
-                timer += Time.deltaTime;
-                yield return null;
-            }
+            yield return new WaitWhile(() => audio.isPlaying);
 
-            if (!audio.isPlaying)
-            {
-                Debug.LogError("TTS failed to start audio!");
-                isSpeaking = false;
-                yield break;
-            }
+            float ttsDuration = Time.time - ttsStart;
+            conversationManager.ttsTime = ttsDuration;
 
-            while (audio.isPlaying)
-            {
-                yield return null;
-            }
+            Debug.Log("TTS TIME: " + (Time.time - ttsStart));
 
             Debug.Log("Speech finished");
 
             OnSpeechFinished?.Invoke();
 
             isSpeaking = false;
+
         }
     }
 }

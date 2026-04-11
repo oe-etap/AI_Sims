@@ -40,6 +40,8 @@ namespace AiSims
         public bool canRecord = true;
         private bool isRecording = false;
 
+        private ConversationManager conversationManager;
+
         void Start()
         {
 #if UNITY_WEBGL
@@ -57,6 +59,8 @@ namespace AiSims
             {
                 LoadApiKey();
             }
+            conversationManager = FindObjectOfType<ConversationManager>();
+            conversationManager.BeginMeasurement();
         }
 
         public void Set_LLM_Handler(LLM_Handler handler)
@@ -191,6 +195,9 @@ namespace AiSims
         // --- Local Whisper Client ---
         private IEnumerator SendToLocalServer(byte[] wavData)
         {
+
+            float whisperStart = Time.time;
+
             WWWForm form = new WWWForm();
             form.AddBinaryData("file", wavData, "recording.wav", "audio/wav");
 
@@ -199,6 +206,11 @@ namespace AiSims
             using (UnityWebRequest www = UnityWebRequest.Post(localServerUrl, form))
             {
                 yield return www.SendWebRequest();
+
+                Debug.Log("WHISPER TIME: " + (Time.time - whisperStart));
+                float whisperDuration = Time.time - whisperStart;
+                conversationManager.whisperTime = whisperDuration;
+
                 if (www.result != UnityWebRequest.Result.Success)
                 {
                     Debug.LogError("Whisper STT Error (Local Client): " + www.error);
@@ -215,6 +227,7 @@ namespace AiSims
                     Debug.Log("Whisper Response (Local Client): " + response.text);
                     Logger.Log(LoggingInfo.DialogueUser, response.text, true);
                     Logger.Log(LoggingInfo.STT, "STT stop", true);
+
                     llm_handler?.ProcessMessage(response.text);
                 }
             }

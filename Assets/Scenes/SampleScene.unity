@@ -27028,6 +27028,8 @@ MonoBehaviour:
   femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
     type: 3}
   femaleTokenizer: {fileID: 8426922583186148655}
+  maleTts: {fileID: 1932414791}
+  femaleTts: {fileID: 1197896437}
 --- !u!82 &4627315776802419478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31971,6 +31973,8 @@ MonoBehaviour:
   femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
     type: 3}
   femaleTokenizer: {fileID: 8426922583186148655}
+  maleTts: {fileID: 1932414791}
+  femaleTts: {fileID: 1197896437}
 --- !u!4 &8191334241604604049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5927913078574982730, guid: 813ea68e88aa41143b0e1ff394e589d5,
@@ -34066,8 +34070,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameState
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1488588314988214535, guid: 7d789f4184e4dd542939ed6df6e26831, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -34079,6 +34082,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8710000138675048314}
+    - targetCorrespondingSourceObject: {fileID: 8445918798907344845, guid: 7d789f4184e4dd542939ed6df6e26831,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8710000138675048317}
   m_SourcePrefab: {fileID: 100100000, guid: 7d789f4184e4dd542939ed6df6e26831, type: 3}
 --- !u!1 &8710000138675048312 stripped
 GameObject:
@@ -34126,6 +34133,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1579ce97dde42e4488abe002c041a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8710000138675048317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710000138675048312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012eafd842b7d834b9462d8111189f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AiSims.Talk
+  maleModel: {fileID: 5022602860645237092, guid: 2800bee8fe30c664d9b97590a331efc3,
+    type: 3}
+  maleTokenizer: {fileID: 1477696776}
+  femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
+    type: 3}
+  femaleTokenizer: {fileID: 8426922583186148655}
+  maleTts: {fileID: 1932414791}
+  femaleTts: {fileID: 1197896437}
 --- !u!114 &8785158693978114125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34353,6 +34380,8 @@ MonoBehaviour:
   femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
     type: 3}
   femaleTokenizer: {fileID: 8426922583186148655}
+  maleTts: {fileID: 1932414791}
+  femaleTts: {fileID: 1197896437}
 --- !u!114 &9086141451639565881
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,6 +34,13 @@ namespace AiSims
 
         private Quaternion originalRotation;
 
+        public float whisperTime;
+        public float llmTime;
+        public float ttsTime;
+
+        private float totalStartTime;
+        private bool measuring = false;
+
         public void Awake()
         {
             messageDecorator = GetComponent<MessageDecorator>();
@@ -54,6 +61,17 @@ namespace AiSims
         // This function will be called when the NPC finishes talking
         private void OnNpcSpeechFinished()
         {
+            float total = Time.time - totalStartTime;
+
+            Debug.Log(
+                $"TOTAL: {total:F2}s | " +
+                $"WHISPER: {whisperTime:F2}s | " +
+                $"LLM: {llmTime:F2}s | " +
+                $"TTS: {ttsTime:F2}s"
+            );
+
+            measuring = false;
+
             NpcConnection npcConnection = currentNPC.GetNpcConnection();
             float chance = UnityEngine.Random.value; // float between 0.0 and 1.0
             isNpcTalking = false;
@@ -168,6 +186,9 @@ namespace AiSims
 
         public void ProcessMessage(string message)
         {
+            totalStartTime = Time.time;
+            Debug.Log("=== TOTAL START === " + totalStartTime);
+
             if (message == string.Empty) return;
 
             if (userTalkingFeedback)
@@ -430,6 +451,18 @@ namespace AiSims
                 // Align rotation with the NPC
                 marker.rotation = npc.rotation;
             }
+        }
+
+        public void BeginMeasurement()
+        {
+            whisperTime = 0f;
+            llmTime = 0f;
+            ttsTime = 0f;
+
+            totalStartTime = Time.time;
+            measuring = true;
+
+            Debug.Log("=== NEW MEASUREMENT ===");
         }
     }
 }
