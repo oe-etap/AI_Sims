@@ -10307,6 +10307,52 @@ Transform:
   - {fileID: 712905177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1363605895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363605897}
+  - component: {fileID: 1363605896}
+  m_Layer: 0
+  m_Name: WhisperServer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1363605896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363605895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f5bfaccc76b1c4b874fc70ffa97756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WhisperServerManager
+  serverPath: 
+  serverUrl: http://127.0.0.1:8000/docs
+--- !u!4 &1363605897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363605895}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.03688, y: -3.77766, z: 6.5431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1365583899
 GameObject:
   m_ObjectHideFlags: 0
@@ -11397,7 +11443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b850d8c0921da409d18a100faa5bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ESpeakTokenizer
-  jsonFile: {fileID: 4900000, guid: 1a47452c822bc7644a67ca28e693baa9, type: 3}
+  jsonFile: {fileID: 4900000, guid: 2491e6b7dbf963f46927b494db77a4f5, type: 3}
   overrideVoice: en-us+m3
 --- !u!4 &1477696777
 Transform:
@@ -11914,7 +11960,7 @@ GameObject:
   - component: {fileID: 1543544917}
   - component: {fileID: 1543544916}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: NPC AutoSetup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14525,7 +14571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca868912bf896246851e494dc4363ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PiperTtsService
-  modelAsset: {fileID: 5022602860645237092, guid: 2800bee8fe30c664d9b97590a331efc3,
+  modelAsset: {fileID: 5022602860645237092, guid: 82371866d3a65a04dab2c43431a0997a,
     type: 3}
   tokenizer: {fileID: 1477696776}
   audioSource: {fileID: 1932414792}
@@ -27022,12 +27068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012eafd842b7d834b9462d8111189f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiSims.Talk
-  maleModel: {fileID: 5022602860645237092, guid: 2800bee8fe30c664d9b97590a331efc3,
-    type: 3}
-  maleTokenizer: {fileID: 1477696776}
-  femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
-    type: 3}
-  femaleTokenizer: {fileID: 8426922583186148655}
   maleTts: {fileID: 1932414791}
   femaleTts: {fileID: 1197896437}
 --- !u!82 &4627315776802419478
@@ -31967,12 +32007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012eafd842b7d834b9462d8111189f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiSims.Talk
-  maleModel: {fileID: 5022602860645237092, guid: 2800bee8fe30c664d9b97590a331efc3,
-    type: 3}
-  maleTokenizer: {fileID: 1477696776}
-  femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
-    type: 3}
-  femaleTokenizer: {fileID: 8426922583186148655}
   maleTts: {fileID: 1932414791}
   femaleTts: {fileID: 1197896437}
 --- !u!4 &8191334241604604049 stripped
@@ -32994,17 +33028,17 @@ PrefabInstance:
     - target: {fileID: 7760952267304529600, guid: d34f7cbb16d055b4bbeff1baf208d4ce,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7760952267304529600, guid: d34f7cbb16d055b4bbeff1baf208d4ce,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7760952267304529600, guid: d34f7cbb16d055b4bbeff1baf208d4ce,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7760952267304529600, guid: d34f7cbb16d055b4bbeff1baf208d4ce,
         type: 3}
@@ -34145,12 +34179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012eafd842b7d834b9462d8111189f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiSims.Talk
-  maleModel: {fileID: 5022602860645237092, guid: 2800bee8fe30c664d9b97590a331efc3,
-    type: 3}
-  maleTokenizer: {fileID: 1477696776}
-  femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
-    type: 3}
-  femaleTokenizer: {fileID: 8426922583186148655}
   maleTts: {fileID: 1932414791}
   femaleTts: {fileID: 1197896437}
 --- !u!114 &8785158693978114125
@@ -34374,12 +34402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012eafd842b7d834b9462d8111189f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiSims.Talk
-  maleModel: {fileID: 5022602860645237092, guid: 2800bee8fe30c664d9b97590a331efc3,
-    type: 3}
-  maleTokenizer: {fileID: 1477696776}
-  femaleModel: {fileID: 5022602860645237092, guid: e4a857dddb42e7448a6a9933d39c5988,
-    type: 3}
-  femaleTokenizer: {fileID: 8426922583186148655}
   maleTts: {fileID: 1932414791}
   femaleTts: {fileID: 1197896437}
 --- !u!114 &9086141451639565881
@@ -34633,3 +34655,4 @@ SceneRoots:
   - {fileID: 1197896439}
   - {fileID: 1932414793}
   - {fileID: 1477696777}
+  - {fileID: 1363605897}

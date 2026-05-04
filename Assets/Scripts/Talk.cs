@@ -86,11 +86,7 @@ namespace AiSims
 
             var audio = selectedTts.GetComponent<AudioSource>();
 
-            // kis hang tuning
-            audio.pitch = (profile != null && profile.voiceType == NPCVoiceProfile.VoiceType.Male)
-                ? 0.9f
-                : 1.05f;
-            //audio.pitch = 1f;
+            audio.pitch = 1f;
 
             selectedTts.Speak(text);
 

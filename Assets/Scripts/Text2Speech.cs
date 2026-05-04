@@ -69,15 +69,7 @@ namespace AiSims
         /// </summary>
         public void Speak(string text, string voice = null)
         {
-            StartCoroutine(SpeakToClip(text, voice, clip =>
-            {
-                if (clip == null)
-                    return;
-
-                audioSource.Stop();
-                audioSource.clip = clip;
-                audioSource.Play();
-            }));
+            StartCoroutine(SpeakToClip(text, null, null));
         }
     }
 }

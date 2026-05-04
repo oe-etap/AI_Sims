@@ -2,6 +2,9 @@
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Networking;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class WhisperServerManager : MonoBehaviour
 {
@@ -13,7 +16,20 @@ public class WhisperServerManager : MonoBehaviour
     void Awake()
     {
         serverPath = System.IO.Path.Combine(Application.streamingAssetsPath, "server.exe");
+#if UNITY_EDITOR
+    EditorApplication.playModeStateChanged += OnPlayModeChanged;
+#endif
     }
+
+#if UNITY_EDITOR
+void OnPlayModeChanged(PlayModeStateChange state)
+{
+    if (state == PlayModeStateChange.ExitingPlayMode)
+    {
+        StopServer();
+    }
+}
+#endif
 
     IEnumerator Start()
     {
@@ -25,16 +41,23 @@ public class WhisperServerManager : MonoBehaviour
 
     void StartServer()
     {
-        ProcessStartInfo startInfo = new ProcessStartInfo
+        try
         {
-            FileName = serverPath,
-            CreateNoWindow = false,
-            UseShellExecute = true
-        };
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = serverPath,
+                CreateNoWindow = false,
+                UseShellExecute = true
+            };
 
-        serverProcess = Process.Start(startInfo);
+            serverProcess = Process.Start(startInfo);
 
-        UnityEngine.Debug.Log("Server starting...");
+            UnityEngine.Debug.Log("Server starting...");
+        }
+        catch (System.Exception e)
+        {
+            UnityEngine.Debug.Log("Server already running or failed to start: " + e.Message);
+        }
     }
 
     IEnumerator WaitForServer()
@@ -49,17 +72,29 @@ public class WhisperServerManager : MonoBehaviour
                 yield break;
             }
 
-            UnityEngine.Debug.Log("Waiting for server...");
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    void StopServer()
+    {
+        try
+        {
+            foreach (var proc in Process.GetProcessesByName("server"))
+            {
+                proc.Kill();
+            }
+
+            UnityEngine.Debug.Log("Server stopped");
+        }
+        catch (System.Exception e)
+        {
+            UnityEngine.Debug.LogError("Failed to stop server: " + e.Message);
         }
     }
 
     private void OnApplicationQuit()
     {
-        if (serverProcess != null && !serverProcess.HasExited)
-        {
-            serverProcess.Kill();
-            UnityEngine.Debug.Log("Server stopped");
-        }
+        StopServer();
     }
 }

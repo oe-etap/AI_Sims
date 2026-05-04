@@ -207,7 +207,7 @@ namespace AiSims
             {
                 yield return www.SendWebRequest();
 
-                Debug.Log("WHISPER TIME: " + (Time.time - whisperStart));
+                Debug.Log("STT TIME: " + (Time.time - whisperStart));
                 float whisperDuration = Time.time - whisperStart;
                 conversationManager.whisperTime = whisperDuration;
 

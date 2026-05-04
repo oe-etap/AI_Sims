@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.IO;
 using System.IO.Compression;
@@ -100,13 +100,13 @@ public sealed class PiperTtsService : MonoBehaviour
     {
         if (modelAsset == null)
         {
-            Debug.LogError("[PiperTtsService] ModelAsset nincs beállítva.");
+            Debug.LogError("[PiperTtsService] ModelAsset nincs beÃ¡llÃ­tva.");
             yield break;
         }
 
         if (tokenizer == null)
         {
-            Debug.LogError("[PiperTtsService] ESpeakTokenizer nincs beállítva.");
+            Debug.LogError("[PiperTtsService] ESpeakTokenizer nincs beÃ¡llÃ­tva.");
             yield break;
         }
 
@@ -125,7 +125,7 @@ public sealed class PiperTtsService : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError($"[PiperTtsService] Nem sikerült betölteni az espeak-ng-data.zip fájlt: {www.error}");
+                Debug.LogError($"[PiperTtsService] Nem sikerÃ¼lt betÃ¶lteni az espeak-ng-data.zip fÃ¡jlt: {www.error}");
                 yield break;
             }
 
@@ -137,7 +137,7 @@ public sealed class PiperTtsService : MonoBehaviour
             }
             catch (Exception e)
             {
-                Debug.LogError($"[PiperTtsService] Zip kicsomagolási hiba: {e.Message}");
+                Debug.LogError($"[PiperTtsService] Zip kicsomagolÃ¡si hiba: {e.Message}");
                 yield break;
             }
             finally
@@ -160,14 +160,14 @@ public sealed class PiperTtsService : MonoBehaviour
 
         if (string.IsNullOrWhiteSpace(tokenizer.Voice))
         {
-            Debug.LogError("[PiperTtsService] Tokenizer.Voice üres.");
+            Debug.LogError("[PiperTtsService] Tokenizer.Voice Ã¼res.");
             yield break;
         }
 
         int voiceResult = ESpeakNG.espeak_SetVoiceByName(tokenizer.Voice);
         if (voiceResult != 0)
         {
-            Debug.LogError($"[PiperTtsService] eSpeak voice beállítási hiba: {voiceResult}");
+            Debug.LogError($"[PiperTtsService] eSpeak voice beÃ¡llÃ­tÃ¡si hiba: {voiceResult}");
             yield break;
         }
 
@@ -185,9 +185,10 @@ public sealed class PiperTtsService : MonoBehaviour
 
     public void Speak(string text)
     {
+        ESpeakNG.espeak_SetVoiceByName(tokenizer.Voice);
         if (!isReady)
         {
-            Debug.LogWarning("[PiperTtsService] Még nem áll készen.");
+            Debug.LogWarning("[PiperTtsService] MÃ©g nem Ã¡ll kÃ©szen.");
             return;
         }
 
@@ -235,26 +236,31 @@ public sealed class PiperTtsService : MonoBehaviour
                 continue;
 
             audioSource.PlayOneShot(clip);
-            audioSource.clip = clip;
-            audioSource.Play();
+            //audioSource.clip = clip;
+            //audioSource.Play();
             yield return new WaitWhile(() => audioSource.isPlaying);
-            yield return clip;
+            //yield return clip;
         }
     }
 
     private AudioClip SynthesizeClip(string textChunk)
     {
+        int result = ESpeakNG.espeak_SetVoiceByName(tokenizer.Voice);
+
+
         string phonemeString = Phonemize(textChunk);
+
         if (string.IsNullOrWhiteSpace(phonemeString))
             return null;
 
         string[] phonemes = phonemeString.Trim().Select(c => c.ToString()).ToArray();
+        
         int[] tokenIds = tokenizer.Tokenize(phonemes);
         float[] scales = tokenizer.GetInferenceParams();
 
         if (tokenIds == null || tokenIds.Length == 0 || scales == null || scales.Length != 3)
         {
-            Debug.LogError("[PiperTtsService] Érvénytelen tokenizer kimenet.");
+            Debug.LogError("[PiperTtsService] Ã‰rvÃ©nytelen tokenizer kimenet.");
             return null;
         }
 
@@ -284,7 +290,7 @@ public sealed class PiperTtsService : MonoBehaviour
 
         if (audioData == null || audioData.Length == 0)
         {
-            Debug.LogError("[PiperTtsService] Üres audio kimenet.");
+            Debug.LogError("[PiperTtsService] Ãœres audio kimenet.");
             return null;
         }
 
