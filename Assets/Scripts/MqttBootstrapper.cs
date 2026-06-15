@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.IO;
+using DotNetEnv;
 
 namespace AiSims
 {
@@ -8,6 +10,31 @@ namespace AiSims
         private async void Start()
         {
             DontDestroyOnLoad(gameObject);
+
+            // --- READING .ENV FILE ---
+            // Path.Combine ensures that it looks at the project root in the Editor, 
+            // and the folder next to the executable in a compiled Build.
+            string envPath = Path.Combine(Application.dataPath, "..", ".env");
+
+            if (File.Exists(envPath))
+            {
+                try
+                {
+                    // This call reads the file and automatically sets the variables 
+                    // in the background for Environment.GetEnvironmentVariable.
+                    Env.Load(envPath);
+                    Debug.Log("[MQTT] .env file loaded successfully into the runtime environment.");
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[MQTT] Failed to parse .env file. Syntax error? Details: {ex.Message}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("[MQTT] No .env file found. Falling back to native OS environment variables or defaults.");
+            }
+            // ----------------------------
 
             Debug.Log("[MQTT] Reading configuration from environment variables...");
 
