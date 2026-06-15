@@ -17149,7 +17149,7 @@ PrefabInstance:
     - target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0,
         type: 3}
@@ -22213,6 +22213,37 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1255115449}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1255182038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255182039}
+  m_Layer: 0
+  m_Name: MQTTGameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1255182039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255182038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.77766, y: -3.77766, z: 6.5431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1263236031
 GameObject:
   m_ObjectHideFlags: 0
@@ -22347,7 +22378,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   contextSize: 16384
   batchSize: 512
-  model: gemma-3-12b-it-Q4_K_M.gguf
+  model: gemma-3-1b-it-Q4_K_M.gguf
   chatTemplate: gemma
   lora: 
   loraWeights: 
@@ -22358,9 +22389,9 @@ MonoBehaviour:
   SSLKey: 
   SSLKeyPath: 
   minContextLength: 0
-  maxContextLength: 131072
+  maxContextLength: 32768
   embeddingsOnly: 0
-  embeddingLength: 3840
+  embeddingLength: 1152
 --- !u!4 &1288168122
 Transform:
   m_ObjectHideFlags: 0
@@ -28331,7 +28362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1742231187
 Transform:
   m_ObjectHideFlags: 0
@@ -54868,7 +54899,7 @@ PrefabInstance:
     - target: {fileID: 7958516418553984496, guid: 5b8d20b94304d6b4aa68dd42d0a9d562,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54976,12 +55007,12 @@ PrefabInstance:
     - target: {fileID: 4155472122666467541, guid: 7d789f4184e4dd542939ed6df6e26831,
         type: 3}
       propertyPath: NpcVoiceEnable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4155472122666467541, guid: 7d789f4184e4dd542939ed6df6e26831,
         type: 3}
       propertyPath: UserVoiceEnable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4155472122666467541, guid: 7d789f4184e4dd542939ed6df6e26831,
         type: 3}
@@ -55742,3 +55773,4 @@ SceneRoots:
   - {fileID: 1063242899}
   - {fileID: 1742231187}
   - {fileID: 847399761}
+  - {fileID: 1255182039}
