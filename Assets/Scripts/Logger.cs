@@ -83,7 +83,7 @@ namespace AiSims
             }
         }
 
-        public static void LogToMqtt(GameEventType eventType, string message, string topic = "game/events")
+        public static void LogToMqtt(GameEventType eventType, string message, string topic = "device/game/events")
         {
             // 1. Create the JSON structure
             GameEventLog logEvent = new GameEventLog(eventType, message);
