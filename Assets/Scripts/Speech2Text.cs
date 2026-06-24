@@ -122,9 +122,11 @@ namespace AiSims
                 }
                 else
                 {
-                    Debug.Log("Whisper Response (OpenAI): " + ExtractText(www.downloadHandler.text));                    
-                    Logger.Log(LoggingInfo.DialogueUser, ExtractText(www.downloadHandler.text), true);
+                    string extractedText = ExtractText(www.downloadHandler.text);
+                    Debug.Log("Whisper Response (OpenAI): " + extractedText);                    
+                    Logger.Log(LoggingInfo.DialogueUser, extractedText, true);
                     Logger.Log(LoggingInfo.STT, "STT stop", true);
+                    Logger.LogToMqtt(GameEventType.VoiceInputEnd, extractedText);
                     llm_handler?.ProcessMessage(ExtractText(www.downloadHandler.text));
                 }
             }

@@ -99,6 +99,7 @@ namespace AiSims
                 sanitized = sanitized.Replace("\\", "");  // Remove backslashes if any remain
 
                 Debug.Log($"{llmCharacter.AIName}: {sanitized}");
+                Logger.LogToMqtt(GameEventType.NpcReply, sanitized);
 
                 // Step 8: Pass to conversation manager
                 conversationManager.TalkNpc(sanitized, this, llmCharacter.AIName);

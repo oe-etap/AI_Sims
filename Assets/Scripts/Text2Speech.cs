@@ -72,17 +72,36 @@ namespace AiSims
                 www.SetRequestHeader("Authorization", "Bearer " + apiKey);
 
                 Logger.Log(LoggingInfo.STT, "TTS start", true);
+                
+                // Start measuring latency
+                float startTime = Time.realtimeSinceStartup;
+
+                // LOG: TTS Request started
+                Logger.LogToMqtt(GameEventType.TtsStart, $"Requesting TTS for voice: {voice} | Text length: {text.Length}");
+
                 yield return www.SendWebRequest();
+
+                // Calculate total network and processing delay
+                float latency = Time.realtimeSinceStartup - startTime;
+
+
                 Logger.Log(LoggingInfo.STT, "TTS stop", true);
 
                 if (www.result != UnityWebRequest.Result.Success)
                 {
                     Debug.LogError("TTS Error: " + www.error);
+
+                    // LOG: TTS failed
+                    Logger.LogToMqtt(GameEventType.TtsError, $"TTS Failed after {latency:F2}s. Error: {www.error}");
                 }
                 else
                 {
                     byte[] wavData = www.downloadHandler.data;
                     AudioClip clip = WavToAudioClip(wavData, "TTSClip");
+
+                    // LOG: TTS successful, log latency and clip duration
+                    Logger.LogToMqtt(GameEventType.TtsEnd, $"TTS Success. Latency: {latency:F2}s | Audio Length: {clip.length:F2}s");
+                    
                     onReady?.Invoke(clip);
                 }
             }
