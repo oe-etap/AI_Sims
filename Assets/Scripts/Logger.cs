@@ -82,5 +82,22 @@ namespace AiSims
                 tw.Close();
             }
         }
+
+        public static void LogToMqtt(GameEventType eventType, string message, string topic = "device/game/events")
+        {
+            // 1. Create the JSON structure
+            GameEventLog logEvent = new GameEventLog(eventType, message);
+            string jsonPayload = JsonUtility.ToJson(logEvent);
+
+            // 2. Fire-and-forget asynchronous publish (does not block the main thread)
+            if (MqttManager.Instance.IsConnected)
+            {
+                _ = MqttManager.Instance.PublishAsync(topic, jsonPayload);
+            }
+            else
+            {
+                Debug.LogWarning($"[Logger] MQTT is not connected, dropping log: {logEvent.type_as_string}");
+            }
+        }
     }
 }

@@ -116,6 +116,9 @@ namespace AiSims
             isNpcTalking = false;
             npcThinkingFeedback.SetActive(false);
             userTalkingFeedback.SetActive(false);
+
+            string npcName = currentNPC != null ? currentNPC.GetLlm().AIName : "Unknown";
+            Logger.LogToMqtt(GameEventType.DialogueEnd, $"{npcName} Talking - End");
         }
 
         public void SetCurrentNPC(NPCToStoryBridge npc)
@@ -128,7 +131,7 @@ namespace AiSims
         public void SetCurrentNPC(LLM_Handler npc)
         {
             currentNPC = npc;
-            if(companionNPC)
+            if (companionNPC)
                 messageDecorator.SetEvaluationInstruction(companionNPC.EvaluationString);
         }
 
@@ -227,7 +230,7 @@ namespace AiSims
         public void QuestEvaluation(int eval)
         {
             Logger.Log(LoggingInfo.MessageNpc, "Evaluation: " + eval.ToString(), true);
-            if(eval == 1 && questManager != null) // Evaluated by LLM
+            if (eval == 1 && questManager != null) // Evaluated by LLM
             {
                 questManager.SetCurrentQuestSuccessful();
             }
@@ -353,6 +356,8 @@ namespace AiSims
                     lookTarget.y = hit.collider.transform.position.y;
                     hit.collider.transform.LookAt(lookTarget);
                     SetCurrentNPC(npcBridge);
+                    // LOG: Start of the conversation with the targeted NPC
+                    Logger.LogToMqtt(GameEventType.DialogueStart, $"{npcBridge.llmHandler.GetLlm().AIName} Talking - Start");
                     StartTalkUserTalkingMessage();
                     TalkUser();
                 }
@@ -376,7 +381,7 @@ namespace AiSims
             }
 
             StartTalkUserTalkingMessage();
-            SetCurrentNPC(npcBridge);            
+            SetCurrentNPC(npcBridge);
             TalkUser();
 
             //Debug.Log("Selected NPC: " + npcBridge.name);
