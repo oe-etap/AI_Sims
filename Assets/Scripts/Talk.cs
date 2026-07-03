@@ -40,7 +40,7 @@ namespace AiSims
 
         private IEnumerator PlayVoice(string text)
         {
-            float ttsStart = Time.time;
+            float ttsStart = Time.realtimeSinceStartup;
 
             if (isSpeaking)
             {
@@ -88,18 +88,22 @@ namespace AiSims
 
             audio.pitch = 1f;
 
+            Logger.LogToMqtt(GameEventType.TtsStart,
+            $"Requesting local Piper TTS | Text length: {text.Length}");
+
             selectedTts.Speak(text);
 
             yield return new WaitForSeconds(0.1f);
 
             yield return new WaitWhile(() => audio.isPlaying);
 
-            float ttsDuration = Time.time - ttsStart;
+            float ttsDuration = Time.realtimeSinceStartup - ttsStart;
             conversationManager.ttsTime = ttsDuration;
 
-            Debug.Log("TTS TIME: " + (Time.time - ttsStart));
+            Logger.LogToMqtt(GameEventType.TtsEnd,
+            $"TTS finished. Total duration: {ttsDuration:F2}s");
 
-            Debug.Log("Speech finished");
+            Debug.Log($"TTS TIME: {ttsDuration:F3}s");
 
             OnSpeechFinished?.Invoke();
 
